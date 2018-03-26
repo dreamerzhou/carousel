@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul, ol, li {
+			list-style: none;
+		}
+		img {
+			vertical-align: middle;
+		}
+		html,body {
+			width: 100%;
+			overflow: hidden;
+			background: #fff;
+		}
+		.banner {
+			position: relative;
+			width: 100%;
+			height: 580px;
+		}
+		.imagesList ul li {
+			position: absolute;
+			left: 50%;
+			margin-left: -840px;
+			width: 100%;
+			height: 580px;
+			display: none;
+		}
+		.imagesList ul li img {
+
+		}
+		.imagesList ul li.current {
+			display: block;
+		}
+		.inner_c {
+			position: relative;
+			z-index: 1;
+			width: 1190px;
+			height: 580px;
+			margin: 0 auto;
+		}
+		.btns a {
+			position: absolute;
+			top: 50%;
+			margin-top: -40px;
+			width: 50px;
+			height: 80px;
+			background: rgba(111, 111, 111, .5);
+			font-size: 30px;
+			color: #fff;
+			text-align: center;
+			line-height: 70px;
+			text-decoration: none;
+		}
+		.btns a:nth-child(1) {
+			left: 0;
+		}
+		.btns a:nth-child(2) {
+			right: 0;
+		}
+		.circles {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			margin-left: -65px;
+		}
+		.circles ol li {
+			float: left;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: teal;
+			margin-right: 20px;
+		}
+		.circles ol li.cur {
+			background: tan;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<div class="imagesList">
+			<ul>
+				<li data-color="#f40" class="current"><img src="./images/tonglan/1.jpg" ></li>
+				<li data-color="#369" ><img src="./images/tonglan/2.jpg" ></li>
+				<li data-color="#111" ><img src="./images/tonglan/3.jpg" ></li>
+			</ul>
+		</div>
+		<div class="inner_c">
+			<div class="btns">
+				<a href="javascript:void(0);"><</a>
+				<a href="javascript:void(0);">></a>
+			</div>
+			<div class="circles">
+				<ol>
+					<li class="cur"></li>
+					<li></li>
+					<li></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript">
+	var $prev = $(".btns a:nth-child(1)");
+	var $next = $(".btns a:nth-child(2)");
+	var $imgLis = $(".imagesList ul li");
+	var $ollis = $(".circles ol li");
+
+	var idx = 0;
+	var lock = true;
+	$prev.click(function () {
+		if (!lock) return;
+		lock = false;
+		$imgLis.eq(idx).fadeOut(500);
+		idx--;
+		if (idx < 0) {
+			idx = 2;
+		}
+		$ollis.eq(idx).addClass('cur').siblings().removeClass('cur');
+		$imgLis.eq(idx).css({
+			"backgroundColor": $imgLis.eq(idx).attr('data-color')
+		})
+		$imgLis.eq(idx).fadeIn(500, function () {
+			lock = true;
+		});
+	});
+
+	$next.click(function () {
+		if (!lock) return;
+		lock = false;
+		$imgLis.eq(idx).fadeOut(500);
+		idx++;
+		if (idx > 2) {
+			idx = 0;
+		}
+		$ollis.eq(idx).addClass('cur').siblings().removeClass('cur');
+		$imgLis.eq(idx).fadeIn(500, function () {
+			lock = true;
+		});
+	})
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul, ol, li {
+			list-style: none;
+		}
+		img {
+			vertical-align: middle;
+		}
+		.carousel {
+			position: relative;
+			width: 830px;
+			height: 130px;
+			overflow: hidden;
+			margin: 100px auto;
+			border: 1px solid #333;
+		}
+		.carousel ul {
+			position: absolute;
+			width: 5000px;
+		}
+		.carousel ul li {
+			float: left;
+			margin-right: 10px;
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li><img src="./images/shuzi/0.png" ></li>
+			<li><img src="./images/shuzi/1.png" ></li>
+			<li><img src="./images/shuzi/3.png" ></li>
+			<li><img src="./images/shuzi/4.png" ></li>
+			<li><img src="./images/shuzi/5.png" ></li>
+			<li><img src="./images/shuzi/6.png" ></li>
+			<li><img src="./images/shuzi/7.png" ></li>
+			<li><img src="./images/shuzi/8.png" ></li>
+			<li><img src="./images/shuzi/9.png" ></li>
+			<li><img src="./images/shuzi/10.png"></li>
+		</ul>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript">
+	var carousel = document.querySelector(".carousel");
+	var ul = document.querySelector(".carousel ul");
+	var timer;
+	var x = 0;
+	timer = setInterval(function () {
+		// clearInterval(timer);
+		x -= 30;
+		ul.style.left = x + "px";
+		if (x < -1250) {
+			x = 0;
+		}
+	}, 200)
+	ul.onmouseover = function () {
+		clearInterval(timer);
+	}
+	ul.onmouseout = function () {
+		clearInterval(timer);
+		timer = setInterval(function () {
+			x -= 30;
+		ul.style.left = x + "px";
+		if (x < -1250) {
+			x = 0;
+		}
+		}, 200)
+	}
+</script>

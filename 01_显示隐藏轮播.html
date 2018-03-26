@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		img {
+			vertical-align: middle;
+		}
+		a {
+			text-decoration: none;
+		}
+		ul, ol, li {
+			list-style: none;
+		}
+		.carousel {
+			position: relative;
+			width: 800px;
+			height: 400px;
+			/*border: 1px solid #333;*/
+			margin: 100px auto;
+		}
+		.carousel ul li {
+			display: none;
+		}
+		.carousel ul li.current {
+			display: block;
+		}
+		.carousel ul li img {
+			width: 800px;
+			height: 400px;
+		}
+		.btns a {
+			position: absolute;
+			top: 50%;
+			margin-top: -50px;
+			width: 40px;
+			height: 70px;
+			background: rgba(111, 111, 111, .5);
+			color: #fff;
+			font-size: 30px;
+			text-align: center;
+			line-height: 70px;
+		}
+		.btns .prev {
+			left: 0;
+		}
+		.btns .next {
+			right: 0;
+		}
+		.circles {
+			position: absolute;
+			bottom: 15px;
+			left: 50%;
+			margin-left: -85px;
+		}
+		.circles li {
+			float: left;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #fff;
+			margin-right: 10px;
+			text-align: center;
+			line-height: 25px;
+		}
+		.circles li.current {
+			background: red;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li class="current"><img src="./images/1.jpg" ></li>
+			<li><img src="./images/2.jpg" ></li>
+			<li><img src="./images/3.jpg" ></li>
+			<li><img src="./images/4.jpg" ></li>
+			<li><img src="./images/5.jpg" ></li>
+		</ul>
+		<div class="btns">
+			<a href="javascript:void(0)" class="prev"><</a>
+			<a href="javascript:void(0)" class="next">></a>
+		</div>
+		<ol class="circles">
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript">
+	var prev = document.querySelector(".prev");
+	var next = document.querySelector(".next");
+	var ullis = document.querySelector(".carousel ul").getElementsByTagName("li");
+	var ollis = document.querySelector(".circles").getElementsByTagName("li");
+
+	console.log(ollis);
+	// 信号量
+	var idx = 0;
+	prev.onclick = function () {
+		for (var i = 0; i < ullis.length; i++) {
+			ullis[i].className = "";
+			ollis[i].className = "";
+		}
+		idx--;
+		if (idx < 0) {
+			idx = 4;
+		}
+		ullis[idx].className = "current";	
+		ollis[idx].className = "current";
+	}
+	next.onclick = function () {
+		for (var i = 0; i < ullis.length; i++) {
+			ullis[i].className = "";
+			ollis[i].className = "";
+		}
+		idx++;
+		if (idx > 4) {
+			idx = 0;
+		}
+		ullis[idx].className = "current";
+		ollis[idx].className = "current";
+	}
+</script>

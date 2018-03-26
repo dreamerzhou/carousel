@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul, li {
+			list-style: none;
+		}
+		.box {
+			width: 1040px;
+			height: 150px;
+			border: 1px solid #333;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.box ul {
+			position: relative;
+			width: 5000px;
+			animation: move 5s linear 0s infinite;
+		}
+		@-webkit-keyframes move {
+			0% {
+				left: 0px;
+			} 
+			100% {
+				left: -1040px;
+			}
+		}
+		.box:hover ul {
+			-webkit-animation-play-state: paused;
+		}
+		.box ul li {
+			float: left;
+			margin-right: 10px;
+		}
+		.box ul li img {
+			width: 200px;
+			height: auto;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><img src="./images/xiaotu/1.jpg" ></li>
+			<li><img src="./images/xiaotu/2.jpg" ></li>
+			<li><img src="./images/xiaotu/3.jpg" ></li>
+			<li><img src="./images/xiaotu/4.jpg" ></li>
+			<li><img src="./images/xiaotu/5.jpg" ></li>
+
+			<li><img src="./images/xiaotu/1.jpg" ></li>
+			<li><img src="./images/xiaotu/2.jpg" ></li>
+			<li><img src="./images/xiaotu/3.jpg" ></li>
+			<li><img src="./images/xiaotu/4.jpg" ></li>
+			<li><img src="./images/xiaotu/5.jpg" ></li>
+		</ul>
+	</div>
+</body>
+</html>
